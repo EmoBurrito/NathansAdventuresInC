@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1484239009 source:/home/nathan/COSC292/MemoryMap/memory.c
+	<stdio.h>
+	"memory.h"
+
+1484238992 /home/nathan/COSC292/MemoryMap/memory.h
+
+1484239017 source:/home/nathan/COSC292/MemoryMap/program.c
+	<stdio.h>
+	"memory.h"
+

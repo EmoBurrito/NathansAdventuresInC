@@ -37,6 +37,7 @@ void PrimitiveDataTypes()
     printf("The size of a char is %d\n", sizeof(int));
     printf("The size of a char is %d\n", sizeof(f));
     printf("The size of a char is %d\n", sizeof(d));
+
 }
 
 /**Typical main method:
@@ -47,28 +48,6 @@ int main (int argc, char *argv[] )
 **/
 
 //Modifiers to the primitive data types
-void Modifiers()
-{
-    //Note that C defaults to signed values
-    //Unsigned means positive values only. To do this, use keyword unsigned
-    //Char is used for a lot of number storage in C because it's a single byte. EX:
-    unsigned char e = 255;
-    e = e + 1;
-    printf("e is %d", e);
-
-    //Inversely, signed can have negatives but only -128 through +127
-    //This is because the first bit is your sign. 0 for positive, 1 for negative
-    //Note
-}
-
-
-
-
-
-
-
-
-//Modifiers to the primitive data types
 void Modifiers ()
 {
 	//Note that C defaults to signed values
@@ -76,6 +55,10 @@ void Modifiers ()
     //Char is used for a lot of number storage in C because it's a single byte. EX:
 	unsigned char e = 255;
 	signed char c = 127;
+
+	//Inversely, signed can have negatives but only -128 through +127
+    //This is because the first bit is your sign. 0 for positive, 1 for negative
+    //Note
 
 	//"short" and "long"
 	short int x;
@@ -96,7 +79,6 @@ void Modifiers ()
 	printf("The size of z is %d\n", sizeof(z)); //A long is 4 bytes
 	//printf("The size of f is %d\n", sizeof(f));
 }
-
 
 void DemoConstants()
 {
@@ -120,12 +102,43 @@ void CastDemo()
 	x = (int)y;
 
 	printf("The value of x is %d\n",x);
+
+	//Temp conversion
+	printf("The temperature in fehrenheit is %f\n", fahr);
+	celc = ((float)5/9) * (fahr - 32); //Cast to prevent integer division
+	printf("The temperature in celsius is %f\n", celc);
+}
+
+// Strings in C --> Wait a minute! There are no strings in C.
+void StringDemo()
+{
+    char myChar = 'M'; //Single quotes surround any SINGLE character
+    char s1 [] = "Bill"; //Can assign a string with double quotes, but only at initialization
+    char s2 [5]; //Can create an array of chars of a given size
+    //s2 = "John"; Can't assign a literal string to a char array. Only way to change s2 is one char at a time.
+    s2[0] = 'J';
+    s2[1] = 'o';
+    s2[2] = 'h';
+    s2[3] = 'n';
+    s2[4] = '\0'; //We must add the null terminator to the end of our strings
+
+    //Print out the strings
+    printf("The value stored in s1 is %s\n", s1);
+    printf("The value stored in s1 is %s\n", s2);
+
+    //Print out the size of each array
+    printf("The size of s1 is %d\n", sizeof(s1));
+    printf("The size of s1 is %d\n", sizeof(s2));
 }
 
 //Lazy quick method
 void main (void)
 {
-    printf("Hello world!\n");
-    PrimitiveDataTypes();
+    //printf("Hello world!\n");
+    //PrimitiveDataTypes();
+    //Modifiers();
+    //DemoConstants();
+    //CastDemo();
+    StringDemo();
     return 0;
 }
