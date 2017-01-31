@@ -19,7 +19,7 @@ double Average(double data[], int iSize)
  * Standard Deviation is how far off the average were most of the people
  * If the class average is 70, but a bunch of people got 40 then StdDev is 30
  */
-double StdDev(double data[], int iSize)
+double StdDev(double data [], int iSize)
 {
 	double dAvg = Average(data, iSize);
 	int i = 0;

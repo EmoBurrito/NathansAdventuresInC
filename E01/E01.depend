@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1485878900 source:/home/nathan/COSC292/E01/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
