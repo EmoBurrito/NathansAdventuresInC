@@ -1,8 +1,13 @@
 # depslib dependency file v1.0
-1485885560 source:/home/nathan/COSC292/06ArraysPointers/main.c
+1486483814 source:/home/nathan/COSC292/06ArraysPointers/main.c
+	<stdio.h>
+	<stdlib.h>
+	"array_pointers.c"
+
+1486485040 /home/nathan/COSC292/06ArraysPointers/array_pointers.h
+
+1486485109 /home/nathan/COSC292/06ArraysPointers/array_pointers.c
 	<stdio.h>
 	<stdlib.h>
 	"array_pointers.h"
-
-1485885493 /home/nathan/COSC292/06ArraysPointers/array_pointers.h
 
