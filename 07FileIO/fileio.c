@@ -11,6 +11,8 @@
 #include <string.h>
 #include "fileio.h"
 
+#define NAME_SIZE 20
+
 //Study errno.h on wikipedia before proceeding.
 //Essentially, there is a global variable called errno that gets set to indicate an error.  See also, strerror function to get a message
 //associated with this value.
@@ -147,5 +149,124 @@ int demoWrite(const char * fileName, const char * fileMode, const char * str)
 
 int demoWriteBinary(const char * fileName, const char * fileMode, const int * iPtr)
 {
+	//Pointer to a file stream
+	FILE * filePtr;
+	//A variable to store potential error codes
+	int iErr = EXIT_SUCCESS;
+	int retVal;
 
+
+	if((filePtr = fopen(fileName, fileMode)) != NULL)
+	{
+		retVal = fwrite((void *)iPtr, sizeof(int), 1, filePtr); //Using 1 because we know we're writing 4 bytes(sizeofint) once
+		if(retVal > 0)
+		{
+			printf("File written: %s\n", fileName);
+
+		}
+		else
+		{
+			if(iErr = ferror(filePtr))
+			{
+				printf("Error writing to the file %s: %s\n", fileName, strerror(iErr));
+			}
+			else
+			{
+				printf("Could not write the data");
+			}
+		}
+
+
+	}
+	else
+	{
+
+		//strerror returns a string associated with he error number.
+		printf("Error accessing the file %s: %s\n", fileName, strerror(iErr));
+	}
+
+	return iErr;
+}
+
+/* First figure out what write/read types we need
+ */
+int exerciseBinaryWrite(const char* fileName, const char * fileMode)
+{
+	//Pointer to a file stream
+	FILE * filePtr;
+	//A variable to store potential error codes
+	int iErr = EXIT_SUCCESS;
+	int retVal;
+	unsigned short records;
+
+	//Prompt for how many records to print
+	printf("How many records do you want to input?(0 - 65535): \n");
+	scanf("%hu", &records); //hu for unsigned short. Can't remember why & is needed
+
+	char strToFile[10000]; //Greatly memory inefficient but whatever. Rob says we'll do dynamic memory allocation later
+
+
+	//Store # of records in the first two bytes of the file
+	* strToFile = (char *) &records;
+	printf("DEBUG: %s\n", strToFile);
+
+	//Repeat a fixed number of times
+	for(int i = 0; i < records; ++i)
+	{
+		unsigned int currentSIN;
+		char currentName[20];
+
+		//Store a SIN (int)
+		printf("Please enter a SIN:\n");
+		scanf("%du", &currentSIN);
+		//Store a full name (up to 20 char including null term), (char[20])
+		printf("Please enter a name:\n");
+		scanf("%19s", &currentName);
+	}
+
+	//Finally, write the whole thing to file
+	if((filePtr = fopen(fileName, fileMode)) != NULL)
+	{
+		retVal = fwrite((void *)strToFile, sizeof(int), 1, filePtr); //Using 1 because we know we're writing 4 bytes(sizeofint) once
+		if(retVal > 0)
+		{
+			printf("File written: %s\n", fileName);
+
+		}
+		else
+		{
+			if(iErr = ferror(filePtr))
+			{
+				printf("Error writing to the file %s: %s\n", fileName, strerror(iErr));
+			}
+			else
+			{
+				printf("Could not write the data");
+			}
+		}
+
+
+	}
+	else
+	{
+
+		//strerror returns a string associated with he error number.
+		printf("Error accessing the file %s: %s\n", fileName, strerror(iErr));
+	}
+
+	return iErr;
+
+}
+
+/* Pass in SIN. Read until ID is found, or reach end of file.
+ * If found, print the following name.
+ * If not, print "Not found."
+ */
+int exerciseBinaryRead(const char * filename, const char * fileMode, int id)
+{
+	//If this is the sin we want, read the next 20 bytes for name. If not, fseek 24 bytes ahead
+	//for(int i = 0; i < WRITE_LOOPS; ++i)
+	//{
+
+	//}
 }

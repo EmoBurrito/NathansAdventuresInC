@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1486489802 source:/home/nathan/COSC292/07FileIO/program.c
+1486660340 source:/home/nathan/COSC292/07FileIO/program.c
 	<stdio.h>
 	<stdlib.h>
-	"fileio.h"
+	"fileio.c"
 
-1486488949 /home/nathan/COSC292/07FileIO/fileio.c
+1486661952 /home/nathan/COSC292/07FileIO/fileio.c
 	<stdio.h>
 	<stdlib.h>
 	<errno.h>
 	<string.h>
 	"fileio.h"
 
-1486502689 /home/nathan/COSC292/07FileIO/fileio.h
+1486657227 /home/nathan/COSC292/07FileIO/fileio.h
 
