@@ -1,0 +1,7 @@
+# Extensions to ignore
+*.o
+*.exe
+*.layout
+
+# Directories to ignore
+

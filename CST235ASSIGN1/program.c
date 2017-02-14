@@ -7,12 +7,18 @@
 #include "q1.h"
 #include "q2.h"
 #include "q3.h"
-#define STRING1 Xyzzy
-#define STRING2 Plugh
+#define STRING1 "Xyzzy"
+#define STRING2 "Plugh"
+#define STRING_LONG "XyzzyLonger"
+#define STRING_SPACE "Xyzzy Plugh"
 
 void TestQ1()
 {
-	printf("The difference between %s and %s is %d", "Xyzzy", "Plugh", compareStrings("Xyzzy", "Plugh"));
+	printf("The difference between %s and %s is %d\n", STRING1, STRING1, compareStrings(STRING1, STRING1));
+	printf("The difference between %s and %s is %d\n", STRING1, STRING2, compareStrings(STRING1, STRING2));
+	printf("The difference between %s and %s is %d\n", STRING1, STRING_LONG, compareStrings(STRING1, STRING_LONG));
+	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStrings(STRING2, STRING1));
+	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStrings(STRING2, STRING1));
 }
 
 void TestQ2()
