@@ -21,9 +21,14 @@ void TestQ1()
 	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStrings(STRING2, STRING1));
 }
 
+//If this were C#, I'd probably use a function pointer to make this a little more efficient
 void TestQ2()
 {
-
+	printf("The difference between %s and %s is %d\n", STRING1, STRING1, compareStringsInt(STRING1, STRING1));
+	printf("The difference between %s and %s is %d\n", STRING1, STRING2, compareStringsInt(STRING1, STRING2));
+	printf("The difference between %s and %s is %d\n", STRING1, STRING_LONG, compareStringsInt(STRING1, STRING_LONG));
+	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStringsInt(STRING2, STRING1));
+	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStringsInt(STRING2, STRING1));
 }
 
 void TestQ3()
@@ -33,9 +38,9 @@ void TestQ3()
 
 int main(void)
 {
-    TestQ1();
+    //TestQ1();
 	TestQ2();
-	TestQ3();
+	//TestQ3();
 
     return EXIT_SUCCESS;
 }

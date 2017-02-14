@@ -21,7 +21,9 @@ int compareStrings(char * string1, char * string2)
 		{
 			return toReturn; //If we haven't found a difference yet and both are null terminated, they match.
 		}
-		toReturn = *string1 - *string2;
+
+		toReturn = *string1 - *string2; //Compare current characters
+		
 		if (DEBUG)
 		{
 			printf("Comparing %c to %c: %d\n", *string1, *string2, toReturn);
