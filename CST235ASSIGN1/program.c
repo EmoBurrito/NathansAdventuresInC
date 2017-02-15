@@ -18,7 +18,7 @@ void TestQ1()
 	printf("The difference between %s and %s is %d\n", STRING1, STRING2, compareStrings(STRING1, STRING2));
 	printf("The difference between %s and %s is %d\n", STRING1, STRING_LONG, compareStrings(STRING1, STRING_LONG));
 	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStrings(STRING2, STRING1));
-	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStrings(STRING2, STRING1));
+	printf("The difference between %s and %s is %d\n", STRING2, STRING_SPACE, compareStrings(STRING2, STRING_SPACE));
 }
 
 //If this were C#, I'd probably use a function pointer to make this a little more efficient
@@ -28,19 +28,20 @@ void TestQ2()
 	printf("The difference between %s and %s is %d\n", STRING1, STRING2, compareStringsInt(STRING1, STRING2));
 	printf("The difference between %s and %s is %d\n", STRING1, STRING_LONG, compareStringsInt(STRING1, STRING_LONG));
 	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStringsInt(STRING2, STRING1));
-	printf("The difference between %s and %s is %d\n", STRING2, STRING1, compareStringsInt(STRING2, STRING1));
+	printf("The difference between %s and %s is %d\n", STRING2, STRING_SPACE, compareStringsInt(STRING2, STRING_SPACE));
 }
 
 void TestQ3()
 {
-
+	printf("Write: %d", writeDataToFile("myA1File.txt"));
+	printf("Write: %d", readDataFromFile("myA1File.txt"));
 }
 
 int main(void)
 {
     //TestQ1();
-	TestQ2();
-	//TestQ3();
+	//TestQ2();
+	TestQ3();
 
     return EXIT_SUCCESS;
 }
