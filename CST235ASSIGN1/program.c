@@ -11,6 +11,7 @@
 #define STRING2 "Plugh"
 #define STRING_LONG "XyzzyLonger"
 #define STRING_SPACE "Xyzzy Plugh"
+#define FILE_NAME "myA1File.txt"
 
 void TestQ1()
 {
@@ -33,8 +34,8 @@ void TestQ2()
 
 void TestQ3()
 {
-	printf("Write: %d", writeDataToFile("myA1File.txt"));
-	printf("Write: %d", readDataFromFile("myA1File.txt"));
+	writeDataToFile(FILE_NAME);
+	readDataFromFile(FILE_NAME);
 }
 
 int main(void)
