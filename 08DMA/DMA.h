@@ -3,6 +3,7 @@
 
 #define MAX_STRING_SIZE 250
 #define MAX_NAME_SIZE 20
+#define SIN_SIZE 4
 
 //Method to print an array of integers
 void printInts (int *, int);
