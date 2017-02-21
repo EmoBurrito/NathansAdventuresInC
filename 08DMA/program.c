@@ -53,7 +53,10 @@ void TestDynamicString()
 
 void testSIN()
 {
-	printNameAndSin(getNameAndSin());
+	char * cBuffer = getNameAndSin();
+	printNameAndSin(cBuffer);
+	free(cBuffer);
+	cBuffer = NULL;
 }
 
 int main (void)

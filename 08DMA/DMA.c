@@ -114,24 +114,27 @@ char * getStringDynamic(char * cPrompt)
 char * getNameAndSin()
 {
 	//Create buffer
-	char * cBuffer = (char *)malloc(sizeof(char)* (MAX_NAME_SIZE+SIN_SIZE));
+	char * cBuffer = (char *)malloc(sizeof(char)* MAX_NAME_SIZE + sizeof(int) * SIN_SIZE);
 
 	//Ask user for name
 	printf("Please enter a name: \n");
-	scanf("%20s", cBuffer);
+	//scanf("%20s", cBuffer); Can't use scanf because it doesn't support spaces.
+	fgets(cBuffer, MAX_NAME_SIZE, stdin); //Params are char *, size to read (automatically null terminates after 19), read location
+	//cBuffer[strlen(cBuffer - 1)] = '\0'; //Rob did this to counter fgets reading the new line. Worked for Rob but not me, seems to be a running pattern today
 
-	//Dump name in first 20 bytes
-
-	//Dump sin in last 4 bytes
+	//Read in the SIN
 	printf("Please enter an int: \n");
 	scanf("%d", (int *)(cBuffer + MAX_NAME_SIZE));
-	if(DEBUG){printf("Name is %s, SIN is %d\n", cBuffer, (int *)cBuffer+20);}
+
+	return cBuffer;
 }
 
 //A function to display a name and SIN
 void printNameAndSin(char * cBuffer)
 {
 	//Print the first 20 characters
+	printf("%s\n", cBuffer);
 
 	//Print the last 4 bytes as an int
+	printf("The SIN is %d\n", *((int *)(cBuffer + MAX_NAME_SIZE))); //Cast to in, then dereference the whole thing
 }
