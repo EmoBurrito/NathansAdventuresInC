@@ -47,6 +47,24 @@ typedef struct
 	int iMarkCount;
 } student;
 
+typedef struct
+{
+	//Array of student pointers
+	student ** sPtrPtr;
+	unsigned short sNumStudents;
+} classroom;
+
+/**
+ * Ask the user how many students they want to enter.
+ * For each student, ask the user for data.
+ * Call CreateStudent, and add that pointer to the classroom array of students.
+ * Set the number of students as well.
+ */
+classroom PopulateClassRoom();
+
+//Display each student in the classroom.
+void DisplayClassroom(classroom);
+
 void DisplayBirthDateBasic(struct BirthDate); //C does not require formal names, but it does require struct in this situation
 void DisplayBirthDateTypeDef(BirthDateTD); //C does not require formal names, but it does require struct in this situation
 void AlterBirthDate(BirthDateTD);

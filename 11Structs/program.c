@@ -88,7 +88,7 @@ void TestStudentStruct()
 
 int main(void)
 {
-	TestDynamicallyAllocatedStructs();
+	TestStudentStruct();
 
 	return EXIT_SUCCESS;
 }

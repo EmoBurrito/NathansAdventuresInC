@@ -27,9 +27,35 @@ void AlterBirthDateByRef(BirthDateTD * bdPtr)
 	(*bdPtr).day = 31;
 }
 
+/**
+ * To dynamically allocate a student struct and initialize with the data passed in.
+ * @param cNamePtr a pointer to a null terminated string
+ * @param iStudentNum an integer containing the studen number
+ * @param iMarksPtr a pointer to an array of integers, each int representing a grade
+ * @param iMarkCount number of marks in the array of integers
+ */
 student * CreateStudent(char * cNamePtr, int iStudentNum, int * iMarksPtr, int iMarkCount)
 {
+	//Allocat memory for the student struct
+	student * sPtr = (student *)malloc(sizeof(student));
 
+	//Allocate memory for the name. Need to deep copy.
+	sPtr->cNamePtr = (char *)malloc((strlen(cNamePtr)+1)*sizeof(char));
+	//Copy the string to the allocated buffer
+	strcpy(sPtr->cNamePtr, cNamePtr);
+
+	//Assign the student number. Shallow copy because it's a primitive?
+	sPtr->iStudentNum = iStudentNum;
+
+	//Marks array
+	sPtr->iMarksPtr = (int *)malloc(iMarkCount*sizeof(int));
+	//strcpy is only good for strings, otherwise use memcpy
+	memcpy(sPtr->iMarksPtr, iMarksPtr, iMarkCount*sizeof(int));
+
+	//Set the mark count
+	sPtr->iMarkCount = iMarkCount;
+
+	return sPtr;
 }
 
 //Note student is pass by value, therefore use . operator on s
@@ -55,4 +81,40 @@ void FreeStudent(student * sPtr)
 	sPtr->iMarksPtr = NULL;
 	free(sPtr);
 	sPtr = NULL;
+}
+
+classroom PopulateClassRoom()
+{
+	unsigned short iNumStudents;
+	printf("How many students would you like to enter?:\n");
+	scanf("%hu", iNumStudents);
+
+	//Prompt for each student
+	for (int i = 0; i < iNumStudents; ++i)
+	{
+		//Get Name
+		char * sName;
+		printf("Name:\n");
+		fgets();
+
+		//Get student number
+		int iStudentNum;
+		printf("Student number: \n");
+		scanf("%d", iStudentNum);
+
+		marks [] = {};
+		student * sPtr = CreateStudent("Rob Miller", 123456789, marks, sizeof(marks)/sizeof(int));
+	}
+
+	classroom toReturn();
+}
+
+void DisplayClassroom(classroom myClassroom);
+{
+	//For each student
+	for (int i = 0; i < myClassroom->sNumStudents; ++i)
+	{
+		//Display student
+		//DisplayStudent()
+	}
 }
