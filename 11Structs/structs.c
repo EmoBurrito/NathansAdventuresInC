@@ -83,38 +83,52 @@ void FreeStudent(student * sPtr)
 	sPtr = NULL;
 }
 
-classroom PopulateClassRoom()
+/**
+ * Ask the user how many students they want to enter.
+ * For each student, ask the user for data.
+ * Call CreateStudent, and add that pointer to the classroom array of students.
+ * Set the number of students.
+*/
+classroom PopulateClassroom()
 {
-	unsigned short iNumStudents;
-	printf("How many students would you like to enter?:\n");
-	scanf("%hu", iNumStudents);
+	classroom c;
+	printf("Enter number of students:");
+	scanf("%hu", &c.sNumStudents);
 
-	//Prompt for each student
-	for (int i = 0; i < iNumStudents; ++i)
+	c.sPtrPtr = (student **)malloc(c.sNumStudents*sizeof(student *));
+
+
+	for (int var = 0; var < c.sNumStudents; ++var)
 	{
-		//Get Name
-		char * sName;
-		printf("Name:\n");
-		fgets();
-
-		//Get student number
-		int iStudentNum;
-		printf("Student number: \n");
-		scanf("%d", iStudentNum);
-
-		marks [] = {};
-		student * sPtr = CreateStudent("Rob Miller", 123456789, marks, sizeof(marks)/sizeof(int));
+		c.sPtrPtr[var] = GetStudent();
 	}
-
-	classroom toReturn();
+	return c;
 }
 
-void DisplayClassroom(classroom myClassroom);
+student * GetStudent()
 {
-	//For each student
-	for (int i = 0; i < myClassroom->sNumStudents; ++i)
+	char cName [256];
+	int iMarks [2];
+	int iStudentNum = 0;;
+
+	printf("Enter student name: ");
+	fflush(stdin);
+	gets(cName);
+
+	printf("Enter student number: ");
+	scanf("%d", &iStudentNum);
+
+	printf("Enter two marks: ");
+	scanf("%d %d",iMarks, iMarks + 1);
+
+	return CreateStudent(cName, iStudentNum, iMarks, 2);
+}
+
+//Display each student in the classroom.
+void DisplayClassroom(classroom c)
+{
+	for (int var = 0; var < c.sNumStudents; ++var)
 	{
-		//Display student
-		//DisplayStudent()
+		DisplayStudent(*c.sPtrPtr[var]);
 	}
 }

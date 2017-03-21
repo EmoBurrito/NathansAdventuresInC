@@ -86,6 +86,15 @@ void TestStudentStruct()
 	FreeStudent(sPtr);
 }
 
+void TestClassRoom()
+{
+	classroom c;
+	c = PopulateClassroom();
+	DisplayClassroom(c);
+
+	// TODO - Free all memory
+}
+
 int main(void)
 {
 	TestStudentStruct();
