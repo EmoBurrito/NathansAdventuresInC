@@ -1,8 +1,0 @@
-10:56:12 **** Incremental Build of configuration Default for project 14Bitmaps ****
-make all 
-gcc -c bitmap.c
-gcc -c program.c
-gcc -o program.exe bitmap.o program.o -lm
-
-10:56:12 Build Finished (took 122ms)
-
