@@ -73,19 +73,19 @@ typedef struct
 //Helper method to open a file
 FILE * GetFile(char * cPrompt, char * cMode);
 
-//A function pointer to a function that manipulates a pixel
-typedef void (*BM_FUNC_PTR)(PIXEL *);
-//A function to loop through the array or pixels
-BOOL ManipulateImage(IMAGE * imgPtr, BM_FUNC_PTR pixelFunc);
 
 //Functions to read in an image
 void ReadImage (IMAGE * imgPtr, FILE * infile);
 void ReadHeader(IMAGE * imgPtr, FILE * infile);
 void ReadData(IMAGE * imgPtr, FILE * infile);
 
-//Functions for writing out an image
+
 void WriteImage (IMAGE * imgPtr, FILE * outfile);
 void WriteHeader(IMAGE * imgPtr, FILE * outfile);
 void WriteData(IMAGE * imgPtr, FILE * outfile);
+
+
+
+
 
 #endif /* BITMAP_H_ */

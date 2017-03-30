@@ -1,0 +1,33 @@
+/* Author: Nathan Smith, CST235
+ * Date: March 28, '17
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include "bitmap.h"
+
+void TestLoadWriteImage()
+{
+	FILE * infile = GetFile("Enter file to open", "rb");
+	FILE * outfile = GetFile("Enter file to open", "w+b");
+
+	//Create an image struct with both of its pointers set to NULL. Fine because fixed size.
+	IMAGE img = {NULL, NULL};
+
+	//Read in an image
+	ReadImage(&img, infile);
+
+	//Close the file
+	fclose(infile);
+
+	//Write the image out to file
+	WriteImage(&img, outfile);
+}
+
+int main(void)
+{
+	//printf("Size of Bitmap header: %lu\n", sizeof(BITMAPHDR));
+
+	TestLoadImage();
+
+	return EXIT_SUCCESS;
+}

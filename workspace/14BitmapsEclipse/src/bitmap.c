@@ -2,42 +2,11 @@
  * bitmap.c
  *
  *  Created on: Mar 28, 2017
- *      Author: CST235
+ *      Author: ins222
  */
 
 #include "bitmap.h"
 #include <malloc.h>
-
-BOOL ManipulateImage(IMAGE * imgPtr, BM_FUNC_PTR pixelFunc)
-{
-	BOOL bSuccess = TRUE;
-	int i = 0; int j = 0;
-
-	if(imgPtr != NULL && pixelFunc != NULL)
-	{
-		if(imgPtr->bmHDR != NULL && imgPtr->bmData != NULL)
-		{
-			//Process each pixel
-			for ( i = 0; i < imgPtr->bmHDR->dwHeight; ++i)
-			{
-				for (j = 0; j < imgPtr->bmHDR->dwWidth; ++j)
-				{
-					pixelFunc(imgPtr->bmData + i*imgPtr->bmHDR->dwWidth + j);
-				}
-			}
-		}
-		else
-		{
-			bSuccess = FALSE;
-		}
-	}
-	else
-	{
-		bSuccess = FALSE;
-	}
-
-	return bSuccess;
-}
 
 FILE * GetFile(char * cPrompt, char * cMode)
 {

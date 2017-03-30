@@ -2,21 +2,18 @@
  * program.c
  *
  *  Created on: Mar 28, 2017
- *      Author: CST235
+ *      Author: ins222
  */
+
+/*
+ Author: ins222
+ Date: Mar 28, 2017
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "bitmap.h"
 
-void GreyScale(PIXEL * p)
-{
-	BYTE Grey = 0;
-	Grey = (BYTE)((0.11*p->bBlu + 0.59*p->bGrn + 0.3*p->bRed));
-	p->bBlu = Grey;
-	p->bGrn = Grey;
-	p->bRed = Grey;
-}
 
 void TestLoadWriteImage()
 {
@@ -31,7 +28,6 @@ void TestLoadWriteImage()
 	//Close the file
 	fclose(infile);
 
-	ManipulateImage(&img, GreyScale);
 
 	//Write the image out to file
 	WriteImage(&img, outfile);
@@ -40,7 +36,7 @@ void TestLoadWriteImage()
 
 int main (void)
 {
-	//setbuf(stdout, NULL);
+	setbuf(stdout, NULL);
 
 	//printf("Sizeof bitmaphdr %d\n", sizeof(BITMAPHDR));
 	TestLoadWriteImage();
