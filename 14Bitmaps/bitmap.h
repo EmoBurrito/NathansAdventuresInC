@@ -60,6 +60,9 @@ typedef struct
 
 #pragma pack (pop) //Returns to the old pragma
 
+//Helper method to open a file
+FILE * GetFile(char * cPrompt, char * cMode);
+
 //Functions to read in an image
 void ReadImage(IMAGE * imgPtr, FILE * infile);
 void ReadHeader(IMAGE * imgPtr, FILE * infile);
