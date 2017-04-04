@@ -8,6 +8,33 @@
 #include "bitmap.h"
 #include <malloc.h>
 
+PIXEL * GetPixel(unsigned int row, unsigned int col, IMAGE * imgPtr)
+{
+	unsigned int padding = imgPtr->bmHDR->dwWidth%4; //GIFs don't use padding?
+
+	//Size of complete row * number of complete rows + number of bytes preceeding desired pixel in the last row
+	unsigned int offset = (((imgPtr->bmHDR->dwWidth * sizeof(PIXEL)) + padding) * row) + col*sizeof(PIXEL);
+	return (PIXEL *)((BYTE *)imgPtr->bmData + offset);
+}
+
+//Should be bool. Just voiding for time
+void ManipulateTwoImages(IMAGE * imgPtr1, IMAGE * imgPtr2, BM_TWO_PIXELS pixelsFunc)
+{
+	int i = 0;
+	int j = 0;
+	int height = imgPtr1->bmHDR->dwHeight < imgPtr2->bmHDR->dwHeight ? imgPtr1->bmHDR->dwHeight : imgPtr2->bmHDR->dwHeight;
+	int width = imgPtr1->bmHDR->dwWidth < imgPtr2->bmHDR->dwWidth ? imgPtr1->bmHDR->dwWidth : imgPtr2->bmHDR->dwWidth;
+
+	//Process the pixels
+	for (i = 0; i < height; ++i)
+	{
+		for ( j = 0; j < width; ++j)
+		{
+			pixelsFunc(GetPixel(i,j,imgPtr1), GetPixel(i,j, imgPtr2));
+		}
+	}
+}
+
 BOOL ManipulateImage(IMAGE * imgPtr, BM_FUNC_PTR pixelFunc)
 {
 	BOOL bSuccess = TRUE;
@@ -22,7 +49,7 @@ BOOL ManipulateImage(IMAGE * imgPtr, BM_FUNC_PTR pixelFunc)
 			{
 				for (j = 0; j < imgPtr->bmHDR->dwWidth; ++j)
 				{
-					pixelFunc(imgPtr->bmData + i*imgPtr->bmHDR->dwWidth + j);
+					pixelFunc(GetPixel(i,j, imgPtr));
 				}
 			}
 		}

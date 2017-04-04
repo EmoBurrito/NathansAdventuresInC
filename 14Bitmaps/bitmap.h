@@ -75,8 +75,10 @@ FILE * GetFile(char * cPrompt, char * cMode);
 
 //A function pointer to a function that manipulates a pixel
 typedef void (*BM_FUNC_PTR)(PIXEL *);
+typedef void (*BM_TWO_PIXELS)(PIXEL *, PIXEL *);
 //A function to loop through the array or pixels
 BOOL ManipulateImage(IMAGE * imgPtr, BM_FUNC_PTR pixelFunc);
+void ManipulateTwoImages(IMAGE * imgPtr1, IMAGE * imgPtr2, BM_TWO_PIXELS pixelsFunc);
 
 //Functions to read in an image
 void ReadImage (IMAGE * imgPtr, FILE * infile);
